@@ -1,0 +1,57 @@
+//To write a program to read the data of N employee and compute net salary of each employee
+#include<iostream>
+using namespace std;
+#define size 40
+class employee
+{
+	int empno;
+	char empname[size];
+	int basic,net,DA,IT,gross;
+	public:
+		void input();
+		void calculate(int);
+		void output();
+};
+void employee::input()
+{
+	employee e;
+	cout<<"\nEnter the employee number:";
+	cin>>empno;
+	cout<<"\nEnter the name of the employee:";
+	cin>>empname;
+	cout<<"\nEnter employee's basic salary:";
+	cin>>basic;
+	e.calculate(basic);
+}
+void employee::calculate(int bs)
+{
+	DA=(0.52)*bs;
+	gross=DA+bs;
+	IT=(0.3)*gross;
+	net=DA+bs-IT;
+}
+void employee::output()
+{
+	cout<<"\nThe name of the employee is "<<empname;
+	cout<<"\nThe employee number of the employee is "<<empno;
+	cout<<"\nThe Net Salary of the employee is "<<net;
+	cout<<"\n";
+}
+int main()
+{
+	int n,i;
+	cout<<"\nEnter the number of employees:";
+	cin>>n;
+	employee emp[n];
+	for(i=0;i<n;i++)
+	{
+		cout<<"\nEnter the employee "<<i+1<<" details:";
+		emp[i].input();
+	}
+	for(i=0;i<n;i++)
+	{
+		cout<<"\nThe details of the employee "<<i+1<< " is:";
+		emp[i].output();
+	}
+	return 0;
+}
